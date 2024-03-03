@@ -1,0 +1,196 @@
+<!DOCTYPE html> 
+<html> 
+<!-- The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only.  Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.
+ 
+THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
+ 
+ 
+Authors in chronological order of contribution:
+Tim Riedel
+Author 2
+ 
+Further Information:
+http://cns.utexas.edu/fri
+ 
+Research Educator:
+Timothy Riedel
+triedel@utexas.edu
+ 
+Brief Description of Goal of Code:
+blah, blah, blah,
+ 
+Known Issues:
+blah, blah, blah, blah
+
+https://www.w3schools.com/w3css/default.asp
+https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
+-->
+	
+   <head> 
+      <title>Hello World</title>  
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link rel="stylesheet" href="w3.css">
+      <link rel="stylesheet" href="w3-colors-flat.css">
+   </head> 
+
+
+<script>
+    var allergy_count = 0;
+    var cold_count = 0;
+	<!--the allergy_count variable will be used to track for the response and will be added to with every response that aligns with the allergy symptoms; it will initially be set at 0-->
+	<!--the cold_count variable will be used to track for the response and will be added to with every response that aligns with the cold symptoms; it will initially be set at 0-->
+
+		
+<!--the allergyAdd function is used to add to the variable allergy_count everytime an allergy symptom is the response from the questions prompted-->
+
+    function allergyAdd() {
+        allergy_count = allergy_count + 1;
+        alert(allergy_count);
+    }
+
+<!--the coldAdd function is sued to add to the cold allergy_count everytime a cold symptom is the response from the questions prompted-->
+    function coldAdd() {
+        cold_count = cold_count + 1;
+        alert(cold_count);
+	    <!--this line is used to allow for the screen to display for the amount of cold symptoms that are reported by the user-->
+    }
+
+    function Results() {
+        var AP = Math.round((allergy_count / 6) * 100); <!--expresses the allergy percent-->
+        var CP = Math.round((cold_count / 6) * 100); <!--expresses the cold percent-->
+        var resultText = document.getElementById("results");
+        resultText.innerHTML = "Probability it is allergies =" + AP + "%" + "<br> Probability it is a cold =" + CP + "%";  <!--line that expresses both percents-->
+    }
+</script>
+
+
+
+
+<style>	
+.body {
+     margin: 0em;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    overflow-y: auto;
+    z-index: 0;
+    background-color: hsl(0,0%,100%);
+    <!--this part of the code is used to help establish the dimensions of the page that will be used to display the prompted questions as well as the buttons and their corresponding responses; it will also establish the background color-->
+}
+
+  .page:target {
+    left: 0vw;
+    z-index: 1;
+}
+</style>
+
+<body>
+<div id="header" class="w3-container w3-flat-carrot">
+	<h1>Cold or Allergies?</h1>
+</div>
+	
+<div id="content" class="w3-container">
+	<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p>
+	
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+
+<div class="page" id="one"> <!--this part of the code is used to indicate a new page, and what that page identifier is, it should be the opening line to every piece of code regarding one page-->
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question 1</h1> <!--this identifies that it is going to display question1 at the top of the first question page-->
+	</div>
+	
+    	<div id="content" class="w3-container">
+        <p>Are your eyes watery or itchy?.</p>  <!--the question-->
+		<a href="#two"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a> <!--calls back function allergyAdd to indicate that it is an allergy symptom when the button yes is pressed, while also moving the page to the next question-->
+         	<a href="#two"  onclick="coldAdd();" class="w3-btn w3-black">No</a> <!--calls back function coldAdd to indicate that it is a cold symptom when the button no is pressed, while also moving the page to the next question-->
+    	</div>
+</div>
+
+<div class="page" id="two"> <!--indicates what the page two components will look like-->
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question2?</h1> <!--the identifier at the top of the page that will indicate which question this will be-->
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you have a fever?</p> <!--This is question 2-->
+		<a href="#three"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a> <!--this is if the answer is yes, the count for allergyAdd function will go up as the user intidcates an allergy symptom and the page goes to the third question-->
+         	<a href="#three"  onclick="coldAdd();" class="w3-btn w3-black">No</a>  <!--this is if the answer is no, the count for coldAdd function will go up as the user intidcates a cold symptom and the page goes to the third question-->
+	</div>
+</div>	
+
+<div class="page" id="three"> <!--indicates the creation of the third page-->
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question3</h1> <!--identifier at the top of the page that indicates it is question 3-->
+	</div>
+	
+    	<div id="content" class="w3-container">
+        <p>Do you have a sore throat?.</p>   <!--This is question 3-->
+	<a href="#four"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a>  <!--this is if the answer is yes, the count for allergyAdd function will go up as the user intidcates an allergy symptom and the page goes to the fourth question-->
+         <a href="#four"  onclick="coldAdd();" class="w3-btn w3-black">No</a>  <!--this is if the answer is no, the count for coldAdd function will go up as the user intidcates a cold symptom and the page goes to the fourth question-->
+    	</div>
+</div>
+
+<div class="page" id="four"> <!--indicates that it is the creation of the fourth page-->
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question4</h1> <!--question 4 identiifer at the top of the screen-->
+	</div>
+	
+    	<div id="content" class="w3-container">
+        <p>Are your symptoms seasonal or chronic?</p>  <!--question 4-->
+	<a href="#five"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a>  <!--this is if the answer is yes, the count for allergyAdd function will go up as the user intidcates an allergy symptom and the page goes to the fifth question-->
+        <a href="#five"  onclick="coldAdd();" class="w3-btn w3-black">No</a>  <!--this is if the answer is no, the count for coldAdd function will go up as the user intidcates a cold symptom and the page goes to the fifth question-->
+    	</div>
+</div>
+
+<div class="page" id="five">  <!--indicates that it is the creation of the fifth page-->
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question5</h1> <!--question 5 identiifer at the top of the screen-->
+	</div>
+	
+    	<div id="content" class="w3-container">
+        <p>Are there any allergens that are present in the air?</p>     <!--question 5-->
+	<a href="#six"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a>  <!--this is if the answer is yes, the count for allergyAdd function will go up as the user intidcates an allergy symptom and the page goes to the sixth question-->
+        <a href="#six"  onclick="coldAdd();" class="w3-btn w3-black">No</a>  <!--this is if the answer is no, the count for coldAdd function will go up as the user intidcates a cold symptom and the page goes to the sixth question-->
+    	</div>
+</div>
+
+<div class="page" id="six"> <!--indicates that it is the creation of the sixth page-->
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question6</h1> <!--question 6 identiifer at the top of the screen-->
+	</div>
+	
+    	<div id="content" class="w3-container">
+        <p>Are you suffering from body aches?</p>    <!--question 6-->
+	<a href="#seven"  onclick="allergyAdd();" class="w3-btn w3-black"> Yes</a>  <!--this is if the answer is yes, the count for allergyAdd function will go up as the user intidcates an allergy symptom and the page goes to the results page-->
+        <a href="#seven"  onclick="coldAdd();" class="w3-btn w3-black">No</a>  <!--this is if the answer is no, the count for coldAdd function will go up as the user intidcates a cold symptom and the page goes to the results page-->
+    	</div>
+</div>
+
+<div class="page" id="seven"> <!--indicates that it is the creation of the seventh page-->
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Results</h1>  <!--results identiifer at the top of the screen-->
+	</div>
+	
+    	<div id="content" class="w3-container">
+		<p id = "results" ></p>
+		<a href="#seven" onclick="Results()" class="w3-btn w3-black">View Results</a> <!--this line is to indicate that clicking the button will call back the Results function and display the results-->
+    	</div>
+</div>
+
+	
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p>DIY!</p>
+</footer>
+
+</body>
+</html>
